@@ -1,60 +1,70 @@
+/****Program Name: Write a program to demonstrate various data types and operators.*** */
+/************************Author: sachinthakur9614*********************** */
+
+
+import java.util.NoSuchElementException;
+import java.io.IOException; 
 import java.util.Scanner; 
 import java.util.*;
  class Hackathon{
-		private int userId;
-		private	String firstName;
+		private short userId;
+		String firstName;
 		private	String lastName;
 		private	String userName;
-		private	byte password;
-		private long mobileNo;
+		private int mobileNo;
 		private String email;
-	public void Hackathon(int userId,String firstName,String lastName, byte password,long mobileNo,String email)
+	public void Hackathon(short userId,String firstName,String lastName,int mobileNo,String email)
 	{
 			userId = this.userId;
 			firstName = this.firstName;
-			lastName = this.lastName;
-			password = this.password;
+			lastName = this.lastName;	
 			mobileNo = this.mobileNo;
 			email = this.email;
 
 	}
 	public void readUserInfo()
-	{
-		System.out.println("BASIC INFORMATION");
+	{ 
+	
+		System.out.println("\n\tREAD USER BASIC INFORMATION!");
 		Scanner sc = new Scanner(System.in); 
-		System.out.println("Enter User Id");
-		userId = sc.nextInt();
-		System.out.print("Enter First Name:");
-		firstName = sc.nextLine();
-		System.out.print("Enter Last Name:");
-		lastName = sc.nextLine();
-		System.out.print("Enter Password:");
-		while(sc.hasNext())
-		{
-			password=sc.nextByte(16);
-		}
+		System.out.println("\nEnter User Id");
+		
+		userId = sc.nextShort();
+		System.out.print("\nEnter First Name:");
+		firstName = sc.next();		
+		System.out.println("\nEnter Last Name:");
+		lastName = sc.next();
+		System.out.println("\nEnter Mobile Number:");
+		mobileNo = sc.nextInt();
+		System.out.println("\nEnter Email:");
+		email = sc.nextLine();
+				sc.close();
+	
+
 	}
 	public void  DisplayUSerInfo()
 	{
-		System.out.println("USER BASIC INFORMATION");
-		System.out.println("User Id:"+userId);
-		System.out.print("First Name:"+firstName);
-		System.out.print("Last Name:"+lastName);
-		System.out.print("Password:"+password);
+		System.out.println("\n \tDISPLAY USER BASIC INFORMATION");
+		System.out.println("\nUser Id:"+userId);
+		System.out.println("\nFirst Name:"+firstName);
+		System.out.println("\nLast Name:"+lastName);
+		System.out.println("\nMobile No.:"+lastName);
+		System.out.println("\nEmail:"+lastName);
+		// System.out.print("Password:"+password);
 	}
 }
 
 public class Organiser extends Hackathon{
-	String eventName;
-	String organisedBy;
-	String organiserEmail;
-	String conatctPersonName;
-	short numberOfEvents;
-	float eventCharge;
-	Date startDate;
-	Date endDate;
-	int teamMember;
-	long  contactMobileName;
+	private String eventName;
+	private  String organisedBy;
+	private String organiserEmail;
+	private String conatctPersonName;
+	private short numberOfEvents;
+	private float eventCharge;
+	private Date startDate;
+	private Date endDate;
+	private int teamMember;
+	private long  contactMobileName;
 		public void Organiser(String eventName,String organisedBy,String organiserEmail,String conatctPersonName,short numberOfEvents,
 							float eventCharge,int teamMember,long contactMobileName) 
 		{
@@ -69,52 +79,64 @@ public class Organiser extends Hackathon{
 		}
 public void eventDetails()
 		 {
+		 	System.out.println("\n \tREADING ORGANISER BASIC INFORMATION");
 		 	Scanner sc = new Scanner(System.in); 
-		 	System.out.print("Enter Event Name:");
+		 	System.out.print("\nEnter Event Name:");
 		 	eventName = sc.nextLine();
-			System.out.print("Enter Organised By:");
+			System.out.print("\nEnter Organised By:");
 			organisedBy = sc.nextLine();
-			System.out.print("Enter Organised Email:");
+			System.out.print("\nEnter Organised Email:");
 			organiserEmail = sc.nextLine();		 
-			System.out.print("Enter Contact Person:");
+			System.out.print("\nEnter Contact Person:");
 			conatctPersonName = sc.nextLine();
-			System.out.print("Enter Number Of Events :");
+			System.out.print("\nEnter Number Of Events :");
 			numberOfEvents = sc.nextShort();
-			System.out.print("Enter Event Charge:");
+			System.out.print("\nEnter Event Charge:");
 			eventCharge = sc.nextFloat();
-			System.out.print("Enter Number of Team Member:");
+			System.out.print("\nEnter Number of Team Member:");
 			teamMember = sc.nextInt();
-			System.out.print("Enter Start Date:");
+			System.out.print("\nEnter Start Date:");
 			startDate = new Date();
-			System.out.print("Enter End Date:");
+			System.out.print("\nEnter End Date:");
 			endDate = new Date();
-			System.out.print("Conact Mobile Number:");
+			System.out.print("\nConact Mobile Number:");
 			contactMobileName = sc.nextLong();
 
 	 }
  public void displayEventDetails()
-		 {
-			System.out.print("Event Name:"+eventName);
-			System.out.print("Organised By:"+organisedBy);
-			System.out.print("Organised Email:" + organiserEmail);
-			System.out.print("Contact Person:"+ conatctPersonName);
-			System.out.print("Number Of Events:"+numberOfEvents);
-			System.out.print("Event Charge:"+eventCharge);
-			System.out.print("Number of Team Members:"+teamMember);
-			System.out.print("Enter Start Date:"+startDate);
-			System.out.print("Enter End Date:"+endDate);
+		 {	System.out.println("\n \tDISPLAY ORGANISER BASIC INFORMATION");
+			System.out.println("\nEvent Name:"+eventName);
+			System.out.println("\nOrganised By:"+organisedBy);
+			System.out.println("\nOrganised Email:" + organiserEmail);
+			System.out.println("\nContact Person:"+ conatctPersonName);
+			System.out.println("\nNumber Of Events:"+numberOfEvents);
+			System.out.println("\nEvent Charge:"+eventCharge);
+			System.out.println("\nNumber of Team Members:"+teamMember);
+			System.out.println("\nEnter Start Date:"+startDate);
+			System.out.println("\nEnter End Date:"+endDate);
 		 }
 public static void main(String args[])
 		{
-			System.out.print("***Program Name: Write a program to demonstrate various data types and operators.***");
-			System.out.print("***********************Author: Sachin Thakur***********************");
-			System.out.print("***********************Reg. No: 1847250***********************");
+			System.out.println("***Program Name: Write a program to demonstrate various data types and operators.***\n");
+			System.out.println("***********************Author: Sachin Thakur***********************\n");
+			System.out.println("***********************Reg. No: 1847250***********************\n");
 			Hackathon user = new Hackathon();
-			System.out.print("USER INFORMATION!");
+			System.out.println("\n\tUSER INFORMATION!\n");
+			try { 
 			user.readUserInfo();
-			System.out.print("USER INFORMATION!");
+		
+			}
+
+		catch (Exception e)
+		 {
+	 			user.readUserInfo();
+        
+  		  } 
+    	
+			
 			user.DisplayUSerInfo();
 			Organiser org = new Organiser();
+			System.out.println("ORGANISER INFORMATION!\n");
 			org.eventDetails();
 			org.displayEventDetails();
 		}
