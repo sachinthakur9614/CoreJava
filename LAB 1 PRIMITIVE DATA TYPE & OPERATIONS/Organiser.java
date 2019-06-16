@@ -3,6 +3,8 @@
 
 
 import java.util.NoSuchElementException;
+
+import java.util.InputMismatchException;
 import java.io.IOException;
 import java.io.*; 
 import java.util.Scanner; 
@@ -28,6 +30,8 @@ import java.util.*;
 	
 		System.out.println("\n\tREAD USER BASIC INFORMATION!");
 		Scanner sc = new Scanner(System.in); 
+		int count=0;
+		try {
 		System.out.println("\nEnter User Id");		
 		userId = sc.nextShort();
 		System.out.print("\nEnter First Name:");
@@ -38,7 +42,14 @@ import java.util.*;
 		mobileNo = sc.nextLong();
 		System.out.println("\nEnter Email:");
 		email = sc.next();
-		sc.close();
+
+	sc.close();
+	} 
+	catch(InputMismatchException e)
+	{
+		System.out.print("Invalid input");
+		readUserInfo();
+	}
 	
 
 	}
@@ -84,6 +95,7 @@ public class Organiser extends Hackathon
 		 	System.out.print("\n\tREADING ORGANISER BASIC INFORMATION");
 		 	Scanner scan = new Scanner(System.in); 
 		 	cls();
+		 	try {
 		 	System.out.println("\nEnter Event Name:");
 		 	eventName = scan.nextInt();
 			System.out.print("\nEnter Organised By:");
@@ -105,6 +117,19 @@ public class Organiser extends Hackathon
 			System.out.print("\nConact Mobile Number:");
 			contactMobileName =scan.nextLong();
 			scan.close();
+		}
+		catch(InputMismatchException e)
+	{
+		System.out.print("Invalid input");
+		eventDetails();
+
+	}
+	catch(NoSuchElementException e)
+	{
+		System.out.print("Invalid input");
+		readUserInfo();
+	}
+	
 
 	 }
  public void displayEventDetails()
@@ -132,32 +157,37 @@ public static void main(String args[]) throws Exception
 			 
 
 
-			 int choice;
+			int choice;
 			int ch;
-			 Scanner scan = new Scanner(System.in); 
-			 System.out.println("Enter Your Choice!");
-			 choice = scan.nextInt();
-try {
+			Scanner scan = new Scanner(System.in); 
+			Hackathon usern = new Hackathon();
+			Organiser org = new  Organiser();
+			 
+
 
 
 			 do {
 
+			 	System.out.println("Enter Your Choice!");
+			 choice = scan.nextInt();
+
+
 			 switch(choice){
-
-
 			 	case 1:
 			 	System.out.println("\n\tUSER INFORMATION!\n");
-			 	Hackathon usern = new Hackathon();
+			 	
 			 	usern.readUserInfo();
-				usern.displayUSerInfo();
-
-
+			 	usern.displayUSerInfo();
+			 		org.eventDetails();
+				org.displayEventDetails();
+			 	
 
 			 	break;
-			 	case 2:
 
+			 	
+			 	case 3:			 
 				 System.out.println("\n\tORGANISER INFORMATION!");
-			 	Organiser org = new  Organiser();
+			 
 			 	org.eventDetails();
 				org.displayEventDetails();
 
@@ -170,12 +200,10 @@ try {
 			  System.out.print("You Want To Continue(Y==1/N==2)!");
 			   ch = scan.nextInt();
 
+
 		
  
 			} while(ch==1);
-}
-catch(Exception e)
-System.out.print(e);
 
 			
 
