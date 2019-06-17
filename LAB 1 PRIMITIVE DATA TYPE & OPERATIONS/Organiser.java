@@ -13,6 +13,7 @@ import java.util.*;
 		private	String lastName;
 		private	String userName;
 		private Long mobileNo;
+		String mobile;
 		private String email;
 		// Basic Constructor of Hackathon class
 	public void Hackathon(short userId,String firstName,String lastName,Long mobileNo,String email)
@@ -29,7 +30,7 @@ import java.util.*;
 		System.out.println("\n\tREAD USER BASIC INFORMATION!");
 		Scanner sc = new Scanner(System.in); 
 		int count=0;
-		try {
+	try {
 		System.out.println("\nEnter User Id");		
 		userId = sc.nextShort();
 		System.out.print("\nEnter First Name:");
@@ -40,6 +41,17 @@ import java.util.*;
 		mobileNo = sc.nextLong();
 		System.out.println("\nEnter Email:");
 		email = sc.next();
+
+		mobile = mobileNo.toString();
+
+		if(mobile.length()<=0||mobile.length()>10)
+		{
+			System.out.print("Invalid Number");
+
+			System.out.println("\nEnter Mobile Number:");
+		mobileNo = sc.nextLong();
+		}
+
 		sc.close();
 	} 
 	catch(InputMismatchException e)
@@ -63,19 +75,22 @@ import java.util.*;
 // Main class of Core Project
 public class Organiser extends Hackathon 
 {
-	int eventName;
+	String eventName;
 	String organisedBy;
 	String organiserEmail;
 	String conatctPersonName;
-	short numberOfEvents;
-	private float eventCharge;
+	Integer numberOfEvents;
+	 Float eventCharge;
 	private Date startDate;
 	private Date endDate;
 	private int teamMember;
-	private Long  contactMobileName;
+ Long  contactMobileNo;
+	Integer expectedTeams;
+	Float totalFee;
+	String mobile;
 	// Calling constructor of Main class
-	public void Organiser(int eventName, String organisedBy, String organiserEmail, String conatctPersonName, short numberOfEvents,
-							float eventCharge, int teamMember, Long contactMobileName) 
+	public void Organiser(String eventName, String organisedBy, String organiserEmail, String conatctPersonName, Integer  numberOfEvents,
+							float eventCharge, int teamMember, Long contactMobileNo) 
 		{
 			eventName = this.eventName;
 			organisedBy = this.organisedBy;
@@ -83,8 +98,9 @@ public class Organiser extends Hackathon
 			conatctPersonName = this.conatctPersonName;
 			numberOfEvents= this.numberOfEvents;
 			eventCharge = this.eventCharge;
+
 			teamMember = this.teamMember;
-			contactMobileName = this.contactMobileName;
+			contactMobileNo = this.contactMobileNo;
 		}
 		//Definition of read method to read the data from user 
 	public void eventDetails()
@@ -92,11 +108,12 @@ public class Organiser extends Hackathon
 		 	
 		 	System.out.print("\n\tREADING ORGANISER BASIC INFORMATION");
 		 	Scanner scan = new Scanner(System.in); 
-		 	cls();
+		 	// cls();
 		 	try
 		 	{
 			 	System.out.println("\nEnter Event Name:");
-			 	eventName = scan.nextInt();
+			 	scan.next();
+			 	eventName = scan.next();
 				System.out.print("\nEnter Organised By:");
 				organisedBy = scan.next();
 				System.out.print("\nEnter Organised Email:");
@@ -104,17 +121,31 @@ public class Organiser extends Hackathon
 				System.out.print("\nEnter Contact Person:");
 				conatctPersonName = scan.next();
 				System.out.print("\nEnter Number Of Events :");
-				numberOfEvents = scan.nextShort();
+				numberOfEvents = scan.nextInt();
 				System.out.print("\nEnter Event Charge:");
 				eventCharge = scan.nextFloat();
 				System.out.print("\nEnter Number of Team Member:");
 				teamMember = scan.nextInt();
+				System.out.print("\nEnter Expected Teams:");
+				expectedTeams = scan.nextInt();
 				System.out.print("\nEnter Start Date:");
 				startDate = new Date();
 				System.out.print("\nEnter End Date:");
 				endDate = new Date();
 				System.out.print("\nConact Mobile Number:");
-				contactMobileName =scan.nextLong();
+				contactMobileNo =scan.nextLong();
+
+
+				mobile = contactMobileNo.toString();
+
+				if(mobile.length()<=0||mobile.length()>10)
+				{
+					System.out.print("Invalid Number");
+
+					System.out.println("\nEnter Mobile Number:");
+				contactMobileNo = scan.nextLong();
+				}
+
 				scan.close();
 			}
 		catch(InputMismatchException e)
@@ -125,7 +156,7 @@ public class Organiser extends Hackathon
 		catch(NoSuchElementException e)
 			{
 				System.out.print("Invalid input");
-				readUserInfo();
+				//eventDetails();
 			}
 	
 
@@ -139,59 +170,121 @@ public class Organiser extends Hackathon
 				System.out.println("\nOrganised By:"+organisedBy);
 				System.out.println("\nOrganised Email:" + organiserEmail);
 				System.out.println("\nContact Person:"+ conatctPersonName);
-				System.out.println("\nNumber Of Events:"+numberOfEvents);
-				System.out.println("\nEvent Charge:"+eventCharge);
+				System.out.println("\nNumber Of Events:"+numberOfEvents.intValue());
+				System.out.println("\nEvent Charge:"+eventCharge.floatValue());
 				System.out.println("\nNumber of Team Members:"+teamMember);
 				System.out.println("\n Start Date:"+startDate);
 				System.out.println("\nEnd Date:"+endDate);
-				System.out.println("\nContact Mobile No.:"+endDate);
-					
+				System.out.println("\nContact Mobile No.:"+contactMobileNo.longValue());
+
+				System.out.println("\nExpected Teams:"+expectedTeams.intValue());
+
+
+
 		 }
-public static void main(String args[]) throws Exception
+
+public void totalFees(){
+
+
+	totalFee =expectedTeams * eventCharge;
+		
+	
+	System.out.print("\nTotal Amount Collected  \t\t\t");
+	System.out.print("\t\t "+totalFee.floatValue());
+
+
+	System.out.println("");
+		printLine();
+
+
+	
+
+
+
+
+
+
+} 
+public static void main(String args[]) 
 		{
 			System.out.println("***Program Name: Write a program to demonstrate various data types and operators.***\n");
 			System.out.println("***********************Author: Sachin Thakur***********************\n");
 			System.out.println("***********************Reg. No: 1847250***********************\n");
 			int choice;
-			int ch;
+			byte ch;
 			Scanner scan = new Scanner(System.in); 
 			Hackathon usern = new Hackathon();
 			Organiser org = new  Organiser();
-			do {
+
+			while(true)
+			{
+
+				// System.flush();
+				
+				System.out.println("\n1. User information");
+				System.out.println("2. Event information");
+				System.out.println("3. Exit");
 
 			 	System.out.println("Enter Your Choice!");
+			 	// scan.next();
 			 	choice = scan.nextInt();
+
 
 
 				switch(choice){
 					case 1:
-					 	System.out.println("\n\tUSER INFORMATION!\n");					 	
-					 	usern.readUserInfo();
+					 	System.out.println("\n\t\t \t USER INFORMATION!\n");
+					 	printLine();	
+						usern.readUserInfo();
+						printLine();
+
 					 	usern.displayUSerInfo();
-					 	org.eventDetails();
-						org.displayEventDetails();
+					 	printLine();
+
+
+					 	 // org.eventDetails();
+						  // org.displayEventDetails();
 					 	break;			 	
-			 		case 3:			 
-						System.out.println("\n\tORGANISER INFORMATION!");
+			 		case 2:		
+			 		cls();	 
+						System.out.println("\n\t \t \tORGANISER INFORMATION!");
+						printLine();
 					 
 					 	org.eventDetails();
+					 	printLine();
 						org.displayEventDetails();
+						printLine();
+						cls();
+						System.out.println("\n\t\t \t Total Fee Collection!\n");
+						printLine();
+
+						org.totalFees();
 						break;
+					case 3: System.exit(0);
+					// break;
+
 			 	
 			 		default:
 			 			System.out.print("End Off!");
 			 }
 
-			System.out.print("You Want To Continue(Y==1/N==2)!");
-			ch = scan.nextInt();
+			
 
 
 		
  
-			} while(ch==1);
-
+			}
 		}
 
+
+public static void printLine(){
+for(int i=0;i<=70;i++)
+{
+	System.out.print("=");
+
+}
+
+}
 // This function definition clear the screen of cmd 
 public static void cls()
 {
