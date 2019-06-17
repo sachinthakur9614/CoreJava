@@ -41,17 +41,13 @@ import java.util.*;
 		mobileNo = sc.nextLong();
 		System.out.println("\nEnter Email:");
 		email = sc.next();
-
 		mobile = mobileNo.toString();
-
 		if(mobile.length()<=0||mobile.length()>10)
 		{
 			System.out.print("Invalid Number");
-
 			System.out.println("\nEnter Mobile Number:");
 		mobileNo = sc.nextLong();
 		}
-
 		sc.close();
 	} 
 	catch(InputMismatchException e)
@@ -84,7 +80,7 @@ public class Organiser extends Hackathon
 	private Date startDate;
 	private Date endDate;
 	private int teamMember;
- Long  contactMobileNo;
+ 	Long  contactMobileNo;
 	Integer expectedTeams;
 	Float totalFee;
 	String mobile;
@@ -112,7 +108,7 @@ public class Organiser extends Hackathon
 		 	try
 		 	{
 			 	System.out.println("\nEnter Event Name:");
-			 	scan.next();
+		
 			 	eventName = scan.next();
 				System.out.print("\nEnter Organised By:");
 				organisedBy = scan.next();
@@ -128,24 +124,19 @@ public class Organiser extends Hackathon
 				teamMember = scan.nextInt();
 				System.out.print("\nEnter Expected Teams:");
 				expectedTeams = scan.nextInt();
-				System.out.print("\nEnter Start Date:");
+				// System.out.print("\nEnter Start Date:");
 				startDate = new Date();
-				System.out.print("\nEnter End Date:");
+				// System.out.print("\nEnter End Date:");
 				endDate = new Date();
 				System.out.print("\nConact Mobile Number:");
 				contactMobileNo =scan.nextLong();
-
-
 				mobile = contactMobileNo.toString();
-
 				if(mobile.length()<=0||mobile.length()>10)
 				{
 					System.out.print("Invalid Number");
-
 					System.out.println("\nEnter Mobile Number:");
 				contactMobileNo = scan.nextLong();
 				}
-
 				scan.close();
 			}
 		catch(InputMismatchException e)
@@ -158,12 +149,10 @@ public class Organiser extends Hackathon
 				System.out.print("Invalid input");
 				//eventDetails();
 			}
-	
-
 	 }
 	 // Definition Displaying the Event information
 
- public void displayEventDetails()
+public void displayEventDetails()
 		 {	
 			 	System.out.println("\n \tDISPLAY ORGANISER BASIC INFORMATION");
 				System.out.println("\nEvent Name:"+eventName);
@@ -176,34 +165,15 @@ public class Organiser extends Hackathon
 				System.out.println("\n Start Date:"+startDate);
 				System.out.println("\nEnd Date:"+endDate);
 				System.out.println("\nContact Mobile No.:"+contactMobileNo.longValue());
-
 				System.out.println("\nExpected Teams:"+expectedTeams.intValue());
-
-
-
 		 }
 
 public void totalFees(){
-
-
-	totalFee =expectedTeams * eventCharge;
-		
-	
-	System.out.print("\nTotal Amount Collected  \t\t\t");
-	System.out.print("\t\t "+totalFee.floatValue());
-
-
-	System.out.println("");
-		printLine();
-
-
-	
-
-
-
-
-
-
+				totalFee =expectedTeams * eventCharge;			
+				System.out.print("\nTotal Amount Collected  \t\t\t");
+				System.out.print("\t\t "+totalFee.floatValue());
+				System.out.println("");
+				printLine();
 } 
 public static void main(String args[]) 
 		{
@@ -215,87 +185,63 @@ public static void main(String args[])
 			Scanner scan = new Scanner(System.in); 
 			Hackathon usern = new Hackathon();
 			Organiser org = new  Organiser();
-
 			while(true)
 			{
-
-				// System.flush();
-				
 				System.out.println("\n1. User information");
 				System.out.println("2. Event information");
 				System.out.println("3. Exit");
-
 			 	System.out.println("Enter Your Choice!");
-			 	// scan.next();
 			 	choice = scan.nextInt();
-
-
-
 				switch(choice){
 					case 1:
 					 	System.out.println("\n\t\t \t USER INFORMATION!\n");
 					 	printLine();	
 						usern.readUserInfo();
 						printLine();
-
 					 	usern.displayUSerInfo();
 					 	printLine();
-
-
 					 	 // org.eventDetails();
 						  // org.displayEventDetails();
 					 	break;			 	
 			 		case 2:		
 			 		cls();	 
 						System.out.println("\n\t \t \tORGANISER INFORMATION!");
-						printLine();
-					 
+						printLine();					 
 					 	org.eventDetails();
 					 	printLine();
 						org.displayEventDetails();
-						printLine();
-						cls();
+						printLine();					
 						System.out.println("\n\t\t \t Total Fee Collection!\n");
 						printLine();
-
 						org.totalFees();
 						break;
 					case 3: System.exit(0);
-					// break;
-
-			 	
+							 	
 			 		default:
 			 			System.out.print("End Off!");
-			 }
-
-			
-
-
-		
- 
+			 } 
 			}
 		}
+//This function definition print the  == line where ever this is  call of this  function as printLine() 
+public static void printLine()
+	{
+		for(int i=0;i<=70;i++)
+		{
+			System.out.print("=");
 
-
-public static void printLine(){
-for(int i=0;i<=70;i++)
-{
-	System.out.print("=");
-
-}
-
-}
+		}
+	}
 // This function definition clear the screen of cmd 
 public static void cls()
-{
-	try 
 	{
-		new ProcessBuilder("cmd","/c","cls").inheritIO().start().waitFor();
+		try 
+		{
+			new ProcessBuilder("cmd","/c","cls").inheritIO().start().waitFor();
 
-	} catch(Exception e)
-	{
-		System.out.print(e);
-	} 
-}
+		} catch(Exception e)
+		{
+			System.out.print(e);
+		} 
+	}
 }
 
