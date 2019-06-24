@@ -1,5 +1,5 @@
-/****Program Name: Write a program to implement command line arguments ****/
-/************************Author: sachinthakur9614************************/
+/****Program Name: Write a program to demonstrate various data types and operators.*** */
+/************************Author: sachinthakur9614*********************** */
 import java.util.NoSuchElementException;
 import java.util.InputMismatchException;
 import java.io.IOException;
@@ -8,48 +8,88 @@ import java.util.Scanner;
 import java.util.*;
 // Main class of Core Java project
  class Hackathon {
-		private int userId;
+		private short userId;
 		String firstName;
 		private	String lastName;
 		private	String userName;
 		private Long mobileNo;
 		String mobile;
 		private String email;
+		boolean check;
 		// Basic Constructor of Hackathon class
-	public void Hackathon(int userId,String firstName,String lastName,Long mobileNo,String email)
-	{
-			userId = this.userId;
-			firstName = this.firstName;
-			lastName = this.lastName;	
-			mobileNo = this.mobileNo;
-			email = this.email;
-	}
-// this fucntion pass the Hackathon user data to organiser event
-	public void getNameGetId(int id, String first,String last)
-	{
-		userId = id;
-		firstName = first;
-		lastName = last;	
-		System.out.print("\t\t\t\t Basic User information!");
-		System.out.println("userId:"+userId);
-		System.out.println("firstName:"+firstName);
-		System.out.print("lastName:"+lastName);		
-	}
+	
+public void Hackathon()
+{
+		userId=0;
+		firstName=lastName=email="";
+}
 
 
-	// Definition nput function for reading User Info
-	public void readUserInfo(int id,String first,String last)
+public void Hackathon(short userid,String firstName,String lastName)
+{
+		userId = this.userId;
+		firstName=this.firstName;
+		lastName= this.lastName;
+}
+
+public void Hackathon(short userId,String firstName,String lastName,Long mobileNo,String email)
+{
+		userId = this.userId;
+		firstName = this.firstName;
+		lastName = this.lastName;	
+		mobileNo = this.mobileNo;
+		email = this.email;
+}
+public void readUserInfo(short id)
+{
+	System.out.println("\n\t MODIFY USER INFORMATION");
+	Scanner sc = new Scanner(System.in); 
+
+	System.out.println("Do you want to modify details");
+	check = sc.nextBoolean();
+	if (check== true)
+	{
+
+		System.out.println("\nUser Id:"+id);
+		System.out.print("\nEnter First Name:");
+		firstName = sc.next();		
+		System.out.println("\nEnter Last Name:");
+		lastName = sc.next();
+
+		displayUSerInfo(id);	
+
+
+	}
+	
+
+
+		
+
+
+}
+
+
+public void displayUSerInfo(short id)
+{
+		System.out.println("\n\t MODIFIED USER INFORMATION");
+		System.out.println("\nUser Id:"+id);
+		System.out.println("\nFirst Name:"+firstName);
+		System.out.println("\nLast Name:"+lastName);
+
+}
+	// Definition input function for reading User Info
+	public void readUserInfo()
 	{ 	
 		System.out.println("\n\tREAD USER BASIC INFORMATION!");
 		Scanner sc = new Scanner(System.in); 
 		int count=0;
 	try {
 		System.out.println("\nEnter User Id");		
-		userId = id;
-		System.out.print("\n First Name Is Taken!");
-		firstName = first;
-		System.out.println("\n Last Name is Taken");
-		lastName = last;
+		userId = sc.nextShort();
+		System.out.print("\nEnter First Name:");
+		firstName = sc.next();		
+		System.out.println("\nEnter Last Name:");
+		lastName = sc.next();
 		System.out.println("\nEnter Mobile Number:");
 		mobileNo = sc.nextLong();
 		System.out.println("\nEnter Email:");
@@ -59,15 +99,16 @@ import java.util.*;
 		{
 			System.out.print("Invalid Number");
 			System.out.println("\nEnter Mobile Number:");
-			mobileNo = sc.nextLong();
+		mobileNo = sc.nextLong();
 		}
-		getNameGetId(userId,firstName,lastName);
+
+		readUserInfo(userId);
 		
 	} 
 	catch(InputMismatchException e)
 	{
 		System.out.print("Invalid input");
-		readUserInfo(userId,firstName,lastName);
+		readUserInfo();
 	}
 	}
 	// Difinition input function for display User Info
@@ -90,7 +131,7 @@ public class Organiser extends Hackathon
 	String organiserEmail;
 	String conatctPersonName;
 	Integer numberOfEvents;
-	 Float eventCharge;
+	Float eventCharge;
 	private Date startDate;
 	private Date endDate;
 	private int teamMember;
@@ -111,6 +152,53 @@ public class Organiser extends Hackathon
 			teamMember = this.teamMember;
 			contactMobileNo = this.contactMobileNo;
 		}
+
+		public void Organiser(){
+
+			eventName=organisedBy=organiserEmail=conatctPersonName="";
+	
+		}
+
+	public void Organiser(String eventName,String conatctPersonName, float eventCharge)
+	{
+		eventName= this.eventName;
+		conatctPersonName = this.conatctPersonName;
+		eventCharge= this.eventCharge;
+
+	}	
+
+
+public void eventDetails(boolean che)
+{
+
+ 	Scanner scan = new Scanner(System.in); 
+
+ 	if (che==true)
+ 	{
+ 	System.out.println("\nEnter Event Name:");
+	eventName = scan.next();
+	System.out.print("\nEnter Contact Person:");
+ 	conatctPersonName = scan.next();
+ 	System.out.print("\nEnter Event Charge:");
+	eventCharge = scan.nextFloat();
+}
+	
+
+
+}
+
+
+public void displayEventDetails( boolean che)
+		 {	
+
+if (che==true)
+ 	{
+		 	System.out.println("Event Name:"+eventName);
+ 			System.out.println("\nContact Person:"+ conatctPersonName);
+ 			System.out.println("\nEvent Charge:"+eventCharge.floatValue());
+
+}
+		 	}
 		//Definition of read method to read the data from user 
 	public void eventDetails()
 		 {
@@ -120,7 +208,8 @@ public class Organiser extends Hackathon
 		 	// cls();
 		 	try
 		 	{
-			 	System.out.println("\nEnter Event Name:");		
+			 	System.out.println("\nEnter Event Name:");
+		
 			 	eventName = scan.next();
 				System.out.print("\nEnter Organised By:");
 				organisedBy = scan.next();
@@ -135,8 +224,10 @@ public class Organiser extends Hackathon
 				System.out.print("\nEnter Number of Team Member:");
 				teamMember = scan.nextInt();
 				System.out.print("\nEnter Expected Teams:");
-				expectedTeams = scan.nextInt();		
+				expectedTeams = scan.nextInt();
+				// System.out.print("\nEnter Start Date:");
 				startDate = new Date();
+				// System.out.print("\nEnter End Date:");
 				endDate = new Date();
 				System.out.print("\nConact Mobile Number:");
 				contactMobileNo =scan.nextLong();
@@ -157,7 +248,7 @@ public class Organiser extends Hackathon
 		catch(NoSuchElementException e)
 			{
 				System.out.print("Invalid input");
-				
+				//eventDetails();
 			}
 	 }
 	 // Definition Displaying the Event information
@@ -192,21 +283,11 @@ public static void main(String args[])
 			System.out.println("***********************Reg. No: 1847250***********************\n");
 			int choice;
 			byte ch;
+			boolean che;
+			short id;
 			Scanner scan = new Scanner(System.in); 
 			Hackathon usern = new Hackathon();
-			Organiser org = new  Organiser();		
-		if(args.length<0 || args.length>3)
-		{	
-			cls();
-			printLine();
-			System.out.print("\n");
-			System.out.println("Pass only  three command line arguments");
-			System.exit(0);
-		}		
-		else {	
-		  	int id= Integer.parseInt(args[2]);
-			String firstName = args[0];
-			String lastName=  args[1];
+			Organiser org = new  Organiser();
 			while(true)
 			{
 				System.out.println("\n1. User information");
@@ -216,33 +297,47 @@ public static void main(String args[])
 			 	choice = scan.nextInt();
 				switch(choice){
 					case 1:
-					 	System.out.println("\n\t\t \t USER INFORMATION!\n");
-					 	printLine();		 	
-						usern.readUserInfo(id,firstName,lastName);
-						printLine();
-					 	usern.displayUSerInfo();
-					 	printLine();
-					 	break;			 	
+						 	System.out.println("\n\t\t \t USER INFORMATION!\n");
+						 	printLine();	
+							usern.readUserInfo();
+							printLine();
+						 	usern.displayUSerInfo();
+						 	printLine();
+						 	break;			 	
 			 		case 2:		
-			 		cls();	 
-						System.out.println("\n\t \t \tORGANISER INFORMATION!");
-						printLine();	
-						org.getNameGetId(id, firstName,lastName);//getting user info from base class
-					 	org.eventDetails();
-					 	printLine();
-						org.displayEventDetails();
-						printLine();					
-						System.out.println("\n\t\t \t Total Fee Collection!\n");
-						printLine();
-						org.totalFees();
-						break;
+				 			cls();	 	
+							System.out.println("\n\t \t \t ORGANISER INFORMATION!");
+							printLine();	
+						 	org.eventDetails();
+						 	printLine();
+							org.displayEventDetails();
+							printLine();					
+							System.out.println("\n\t\t \t Total Fee Collection!\n");
+							printLine();
+							System.out.println("\n\t \t \t EVENT USE FUll INFORMATION!");
+							printLine();
+							org.totalFees();
+							System.out.println("\n\n\nDO you want Change Event Name, Contact Person Name and Event Charge(true=YES/false=NO) ");
+							
+							
+							che = scan.nextBoolean();
+							if (che==true)
+							{
+								org.eventDetails(che);
+								org.displayEventDetails(che);
+								org.totalFees();
+								
+							}
+							// org.displayEventDetails(che);
+							
+							break;
 					case 3: System.exit(0);
+							 	
 			 		default:
 			 			System.out.print("End Off!");
 			 } 
 			}
 		}
-	}
 //This function definition print the  == line where ever this is  call of this  function as printLine() 
 public static void printLine()
 	{

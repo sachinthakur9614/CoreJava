@@ -48,7 +48,7 @@ import java.util.*;
 			System.out.println("\nEnter Mobile Number:");
 		mobileNo = sc.nextLong();
 		}
-		sc.close();
+	
 	} 
 	catch(InputMismatchException e)
 	{
@@ -137,7 +137,7 @@ public class Organiser extends Hackathon
 					System.out.println("\nEnter Mobile Number:");
 				contactMobileNo = scan.nextLong();
 				}
-				scan.close();
+				
 			}
 		catch(InputMismatchException e)
 			{
