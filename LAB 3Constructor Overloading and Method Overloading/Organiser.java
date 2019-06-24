@@ -300,7 +300,7 @@ public static void main(String args[])
 						 	System.out.println("\n\t\t \t USER INFORMATION!\n");
 						 	printLine();	
 							usern.readUserInfo();
-							printLine();
+							printLine();	
 						 	usern.displayUSerInfo();
 						 	printLine();
 						 	break;			 	
