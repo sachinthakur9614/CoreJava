@@ -1,3 +1,4 @@
+
 /****Program Name: Write a program to demonstrate various data types and operators.*** */
 /************************Author: sachinthakur9614*********************** */
 import java.util.NoSuchElementException;
@@ -13,8 +14,8 @@ import java.util.*;
 		private	String lastName;
 		private	String userName;
 		private Long mobileNo;
-		String mobile;
-		private String email;
+	 String mobile;
+	 private String email;
 		boolean check;
 		// Basic Constructor of Hackathon class
 	
@@ -25,7 +26,7 @@ public  Hackathon()
 }
 
 
-public  Hackathon(short userid,String firstName,String lastName)
+public Hackathon(short userid,String firstName,String lastName)
 {
 		userId = this.userId;
 		firstName=this.firstName;
@@ -40,6 +41,8 @@ public  Hackathon(short userId,String firstName,String lastName,Long mobileNo,St
 		mobileNo = this.mobileNo;
 		email = this.email;
 }
+
+
 public void readUserInfo(short id)
 {
 	System.out.println("\n\t MODIFY USER INFORMATION");
@@ -123,22 +126,25 @@ public void displayUSerInfo(short id)
 		// System.out.print("Password:"+password);
 	}
 }
-// Main class of Core Project
-public class Organiser extends Hackathon 
-{
-	String eventName;
-	String organisedBy;
-	String organiserEmail;
-	String conatctPersonName;
-	Integer numberOfEvents;
-	Float eventCharge;
-	private Date startDate;
-	private Date endDate;
-	private int teamMember;
- 	Long  contactMobileNo;
-	Integer expectedTeams;
-	Float totalFee;
-	String mobile;
+
+  class Organiser  extends Hackathon {
+		  String eventName;
+		 String organisedBy;
+		 String organiserEmail;
+		 String conatctPersonName;
+		 Integer numberOfEvents;
+		Float eventCharge;
+		private Date startDate;
+		private Date endDate;
+		private int teamMember;
+	 	Long  contactMobileNo;
+		 Integer expectedTeams;
+		 Float totalFee;
+		 String mobile;
+
+		 int  expectedTeam; 
+	 	 float eventCharges;
+
 	// Calling constructor of Main class
 	public void Organiser(String eventName, String organisedBy, String organiserEmail, String conatctPersonName, Integer  numberOfEvents,
 							float eventCharge, int teamMember, Long contactMobileNo) 
@@ -168,39 +174,36 @@ public class Organiser extends Hackathon
 	}	
 
 
-public void eventDetails(boolean che)
-{
+	public   void eventDetails(boolean che)
+	{
 
- 	Scanner scan = new Scanner(System.in); 
+	 	Scanner scan = new Scanner(System.in); 
 
- 	if (che==true)
- 	{
- 	System.out.println("\nEnter Event Name:");
-	eventName = scan.next();
-	System.out.print("\nEnter Contact Person:");
- 	conatctPersonName = scan.next();
- 	System.out.print("\nEnter Event Charge:");
-	eventCharge = scan.nextFloat();
-}
+	 	if (che==true)
+	 	{
+	 	System.out.println("\nEnter Event Name:");
+		eventName = scan.next();
+		System.out.print("\nEnter Contact Person:");
+	 	conatctPersonName = scan.next();
+	 	System.out.print("\nEnter Event Charge:");
+		eventCharge = scan.nextFloat();
+	}
 	
 
 
-}
+	}
+	public  void displayEventDetails( boolean che)
+	{	
+			if (che==true)
+			 	{
+					 	System.out.println("Event Name:"+eventName);
+			 			System.out.println("\nContact Person:"+ conatctPersonName);
+			 			System.out.println("\nEvent Charge:"+eventCharge.floatValue());
 
-
-public void displayEventDetails( boolean che)
-		 {	
-
-if (che==true)
- 	{
-		 	System.out.println("Event Name:"+eventName);
- 			System.out.println("\nContact Person:"+ conatctPersonName);
- 			System.out.println("\nEvent Charge:"+eventCharge.floatValue());
-
-}
-		 	}
+			}
+	}
 		//Definition of read method to read the data from user 
-	public void eventDetails()
+	public  void eventDetails()
 		 {
 		 	
 		 	System.out.print("\n\tREADING ORGANISER BASIC INFORMATION");
@@ -253,7 +256,19 @@ if (che==true)
 	 }
 	 // Definition Displaying the Event information
 
-public void displayEventDetails()
+
+
+	public  void totalFees() 
+		{
+					totalFee =  expectedTeams * eventCharge;			
+					System.out.print("\nTotal Amount Collected  \t\t\t");
+					System.out.print("\t\t "+totalFee);
+				
+		}
+
+
+
+public  void displayEventDetails()
 		 {	
 			 	System.out.println("\n \tDISPLAY ORGANISER BASIC INFORMATION");
 				System.out.println("\nEvent Name:"+eventName);
@@ -267,17 +282,174 @@ public void displayEventDetails()
 				System.out.println("\nEnd Date:"+endDate);
 				System.out.println("\nContact Mobile No.:"+contactMobileNo.longValue());
 				System.out.println("\nExpected Teams:"+expectedTeams.intValue());
-		 }
 
-public void totalFees(){
-				totalFee =expectedTeams * eventCharge;			
-				System.out.print("\nTotal Amount Collected  \t\t\t");
-				System.out.print("\t\t "+totalFee.floatValue());
-				System.out.println("");
-				printLine();
-} 
-public static void main(String args[]) 
+
+		 }
+				
+
+
+
+}
+
+
+
+
+
+ class Sponsor extends Organiser
+{ 
+
+String sponsorOrgName;
+String sponsorOrgEmail;
+int sponsorType;
+String sponosorOfficeLoc;
+
+
+	public void Sponsor(String sponsorOrgName,String sponsorOrgEmail, int sponsorType,String sponosorOfficeLoc)
+	{
+		sponsorOrgName= this.sponsorOrgName;
+		sponsorOrgEmail = this.sponsorOrgEmail;
+		sponsorType= this.sponsorType;
+		sponosorOfficeLoc= this.sponosorOfficeLoc;
+
+	}
+	public void readSponsorDetails()
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("\nEnter Sponsor Org Name:");	
+		sponsorOrgName = sc.next();
+		System.out.print("\nEnter Sponsor Org Email:");
+		sponsorOrgEmail = sc.next();
+		System.out.print("\n Select Sponsor Type:");
+		System.out.println("1. Platinum");
+		System.out.println("2. Gold");
+		System.out.println("3. Silver");
+		sponsorType = sc.nextInt();	 
+
+		if(sponsorType!=1||sponsorType!=2|| sponsorType!=3)
 		{
+				System.out.print("Invalid Selection");	
+				System.out.print("\n Select Sponsor Type:");
+				System.out.println("1. Platinum");
+				System.out.println("2. Gold");
+				System.out.println("3. Silver");
+				sponsorType = sc.nextInt();	 
+		}
+}
+public void DisplaySponsorDetails()
+	{
+
+	// Scanner sc = new Scanner(System.in)
+
+
+		System.out.println("\n Sponsor Org Name:"+sponsorOrgName);
+		
+		System.out.print("\n Sponsor Org Email:"+sponsorOrgEmail);
+		if(sponsorType==1)
+		{
+			System.out.println("Platinum");
+		}
+		else if(sponsorType==2)
+		{
+			System.out.println("Gold");
+		}
+		else if(sponsorType==1)
+		{
+			System.out.println("Silver");
+		}
+		
+	
+
+
+
+
+
+
+
+
+}
+}
+
+
+public class Participant extends Sponsor {
+
+
+String teamName;
+String collegeName;
+Long mobileNo;
+String mobile;
+
+
+
+
+
+public void Participant(String teamName,String collegeName, Long mobileNo)
+{
+
+	teamName = this.teamName;
+	collegeName = this.collegeName;
+	mobileNo = this.mobileNo;
+
+}
+
+
+public void readParticiapntInfo()
+{
+			System.out.print("\n\tREADING PARTICIPANT BASIC INFORMATION");
+		 	Scanner scan = new Scanner(System.in); 
+		 	// cls();
+		 	try
+		 	{
+			 	System.out.println("\nEnter Team Name:");
+		
+			 	teamName = scan.next();
+				System.out.print("\nEnter College Name:");
+				collegeName = scan.next();
+				System.out.print("\nEnter Mobile No.:");
+				mobileNo = scan.nextLong();	 
+
+				mobile = mobileNo.toString();
+				if(mobile.length()<=0||mobile.length()>10)
+				{
+					System.out.print("Invalid Number");
+					System.out.println("\nEnter Mobile Number:");
+				mobileNo = scan.nextLong();
+				}
+
+			}
+			catch(InputMismatchException e)
+			{
+				System.out.print("Invalid input");
+				readParticiapntInfo();
+			}
+			catch(NoSuchElementException e)
+			{
+				System.out.print("Invalid input");
+				readParticiapntInfo();
+			}
+
+
+
+
+}
+
+
+
+
+
+public  void displayParticipantDetails()
+		 {	
+			 	System.out.println("\n \tDISPLAY PARTICIPANT BASIC INFORMATION");
+				System.out.println("\nTeam Name:"+teamName);
+				System.out.println("\nCollege Name:"+collegeName);
+				System.out.println("\nMobile No:" + mobileNo);
+				
+				
+
+		 }
+				
+public  static  void main(String args[])
+	{
+
 			System.out.println("***Program Name: Write a program to demonstrate various data types and operators.***\n");
 			System.out.println("***********************Author: Sachin Thakur***********************\n");
 			System.out.println("***********************Reg. No: 1847250***********************\n");
@@ -287,13 +459,17 @@ public static void main(String args[])
 			short id;
 			Scanner scan = new Scanner(System.in); 
 			Hackathon usern = new Hackathon();
-			Organiser org = new  Organiser();
-			cls();
+			Organiser org = new Organiser();
+			Participant  participant = new Participant();
+
+			 // Organiser org = new  Organiser();
 			while(true)
 			{
 				System.out.println("\n1. User information");
 				System.out.println("2. Event information");
-				System.out.println("3. Exit");
+				System.out.println("3. Participant information");
+				System.out.println("4. Sponsot information");
+				System.out.println("5. Exit");
 			 	System.out.println("Enter Your Choice!");
 			 	choice = scan.nextInt();
 				switch(choice){
@@ -308,7 +484,8 @@ public static void main(String args[])
 			 		case 2:		
 				 			cls();	 	
 							System.out.println("\n\t \t \t ORGANISER INFORMATION!");
-							printLine();	
+							printLine();
+							
 						 	org.eventDetails();
 						 	printLine();
 							org.displayEventDetails();
@@ -319,26 +496,55 @@ public static void main(String args[])
 							printLine();
 							org.totalFees();
 							System.out.println("\n\n\nDO you want Change Event Name, Contact Person Name and Event Charge(true=YES/false=NO) ");
-							
-							
 							che = scan.nextBoolean();
 							if (che==true)
 							{
 								org.eventDetails(che);
 								org.displayEventDetails(che);
 								org.totalFees();
-								
-							}
-							// org.displayEventDetails(che);
-							
+							}			
 							break;
-					case 3: System.exit(0);
+					case 3: cls();	 	
+							System.out.println("\n\t \t \t  PARTICIPANT INFORMATION!");
+							printLine();
+							participant.readParticiapntInfo();
+							participant.displayParticipantDetails();
+							System.out.println("\n\t\t \t Total Fee Payment!\n");
+							printLine();
+							org.totalFees();
+							break;
+					case 4: cls();
+							System.out.println("\n\t \t \t  SPONSOR INFORMATION!");
+							printLine();
+							Sponsor spn = new Sponsor();
+							System.out.println("\n\t \t \t  READ SPONSOR INFORMATION!");
+							spn.readSponsorDetails();
+							System.out.println("\n\t \t \t  DISPLAY SPONSOR INFORMATION!");
+							spn.DisplaySponsorDetails();
+							break;		
+					case 5: System.exit(0);
+					
+					
 							 	
 			 		default:
 			 			System.out.print("End Off!");
 			 } 
-			}
-		}
+			
+
+
+
+
+
+
+	}
+
+
+
+
+}
+
+
+
 //This function definition print the  == line where ever this is  call of this  function as printLine() 
 public static void printLine()
 	{
@@ -349,7 +555,7 @@ public static void printLine()
 		}
 	}
 // This function definition clear the screen of cmd 
-public static void cls()
+public static  void cls()
 	{
 		try 
 		{
@@ -360,5 +566,13 @@ public static void cls()
 			System.out.print(e);
 		} 
 	}
+
+
 }
+
+
+
+
+
+
 

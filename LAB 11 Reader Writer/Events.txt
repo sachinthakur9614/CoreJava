@@ -1,0 +1,11 @@
+Welcome to javaTpoint.
+ Event Name:
+Event NameHackathonHackathon
+ Organised By:Christ
+ Organiser Email:christ@gmail.co
+ Contact Person Name:Kapil
+ Number of Events:3
+ Event Charge:100.0
+ Team Member:3
+ Expected Team:3
+ Mobile Number:987654321
